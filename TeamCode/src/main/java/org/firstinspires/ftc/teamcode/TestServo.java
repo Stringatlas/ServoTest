@@ -3,26 +3,28 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
 public class TestServo extends LinearOpMode{
-    private CRServo testServo;
+    private Servo testServo;
 
     public void runOpMode(){
-        testServo = hardwareMap.get(CRServo.class, "testServo");
+        testServo = hardwareMap.get(Servo.class, "servoTest");
         telemetry.addData("Controls", "Use Controls A and B to turn servo" );
         telemetry.update();
-        double power = 0.9;
+
+        double position = 1;
 
         waitForStart();
 
         while(opModeIsActive()) {
             if (this.gamepad1.a) {
-                testServo.setPower(-power);
+                testServo.setPosition(position);
             } else if (this.gamepad1.b) {
-                testServo.setPower(power);
+                testServo.setPosition(0);
             } else {
-                testServo.setPower(0);
+                testServo.setPosition(0.5);
             }
         }
     }

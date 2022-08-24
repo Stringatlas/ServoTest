@@ -16,7 +16,7 @@ public class TestDCMotor extends LinearOpMode {
 //    }
 
     public void runOpMode() {
-        telemetry.addData("Controls", "A");
+        telemetry.addData("Controls", "Left stick X");
         telemetry.update();
         dcMotor = hardwareMap.get(DcMotorEx.class, "dcMotorTest");
 
@@ -24,11 +24,14 @@ public class TestDCMotor extends LinearOpMode {
 
         while (opModeIsActive()) {
             if (this.gamepad1.a) {
-                dcMotor.setPower(0.5);
+                dcMotor.setPower(this.gamepad1.left_stick_x);
             }
             else {
                 dcMotor.setPower(0);
             }
         }
+
+        telemetry.addData("a", this.gamepad1.left_stick_x);
+        telemetry.update();
     }
 }

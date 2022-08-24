@@ -11,21 +11,23 @@ public class TestServo extends LinearOpMode{
 
     public void runOpMode(){
         testServo = hardwareMap.get(Servo.class, "servoTest");
-        telemetry.addData("Controls", "Use Controls A and B to turn servo" );
+        telemetry.addData("Controls", "Use Controls left stick to turn servo" );
         telemetry.update();
-
-        double position = 1;
 
         waitForStart();
 
         while(opModeIsActive()) {
-            if (this.gamepad1.a) {
-                testServo.setPosition(position);
-            } else if (this.gamepad1.b) {
-                testServo.setPosition(0);
-            } else {
-                testServo.setPosition(0.5);
-            }
+//            if (this.gamepad1.a) {
+//                testServo.setPosition(1);
+//            } else if (this.gamepad1.b) {
+//                testServo.setPosition(0);
+//            } else {
+//                testServo.setPosition(0.5);
+//            }
+
+            testServo.setPosition((gamepad1.left_stick_y + 1.0) / 2.0);
+            telemetry.addData("Servo position: ", testServo.getPosition());
+            telemetry.update();
         }
     }
 }

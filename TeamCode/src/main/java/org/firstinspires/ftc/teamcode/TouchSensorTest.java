@@ -7,9 +7,9 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 
 @TeleOp(name="Tyler",group="TeleOp")
-public class TylerCode extends LinearOpMode {
+public class TouchSensorTest extends LinearOpMode {
     Servo testServo;
-    TouchSensor testTouchSensor;
+    com.qualcomm.robotcore.hardware.TouchSensor testTouchSensor;
 
     public void runOpMode() {
         testServo = hardwareMap.servo.get("servoTest");
